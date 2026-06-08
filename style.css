@@ -1,0 +1,167 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background: #000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    min-height: 100dvh;
+    touch-action: manipulation;
+    user-select: none;
+    -webkit-user-select: none;
+}
+
+.calculator {
+    width: 100%;
+    max-width: 400px;
+    padding: 16px;
+    background: #1a1a2e;
+    border-radius: 24px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+}
+
+.display {
+    padding: 20px 16px 16px;
+    min-height: 120px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: flex-end;
+    overflow: hidden;
+}
+
+.expression {
+    font-size: 18px;
+    color: #888;
+    min-height: 26px;
+    word-break: break-all;
+    text-align: right;
+    width: 100%;
+    line-height: 1.4;
+    transition: opacity 0.2s;
+}
+
+.result {
+    font-size: 48px;
+    font-weight: 300;
+    color: #fff;
+    word-break: break-all;
+    text-align: right;
+    width: 100%;
+    line-height: 1.2;
+    transition: font-size 0.15s ease;
+}
+
+/* Small result text */
+.result.small {
+    font-size: 32px;
+}
+.result.xsmall {
+    font-size: 24px;
+}
+
+.buttons {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+    padding: 8px 0;
+}
+
+.btn {
+    border: none;
+    border-radius: 16px;
+    padding: 0;
+    font-size: 26px;
+    cursor: pointer;
+    aspect-ratio: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.1s ease;
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
+    font-family: inherit;
+}
+
+.btn:active {
+    transform: scale(0.93);
+    opacity: 0.85;
+}
+
+/* Number buttons */
+.btn-number {
+    background: #2d2d44;
+    color: #fff;
+}
+.btn-number:active {
+    background: #3d3d5c;
+}
+
+/* Operator buttons */
+.btn-operator {
+    background: #3a3a5c;
+    color: #a881ff;
+}
+.btn-operator:active {
+    background: #4a4a7c;
+}
+
+/* Clear button */
+.btn-clear {
+    background: #3a3a5c;
+    color: #ff6b6b;
+}
+.btn-clear:active {
+    background: #4a4a7c;
+}
+
+/* Equals button */
+.btn-equals {
+    background: #7c3aed;
+    color: #fff;
+}
+.btn-equals:active {
+    background: #6d28d9;
+}
+
+/* Zero spans 2 columns */
+.btn.zero {
+    grid-column: span 2;
+    aspect-ratio: auto;
+    border-radius: 16px;
+}
+
+/* Haptics hint on mobile */
+@media (hover: none) {
+    .btn {
+        cursor: default;
+    }
+    .btn:active {
+        transform: scale(0.93);
+    }
+}
+
+/* Button press ripple effect */
+.btn::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    background: radial-gradient(circle at center, rgba(255,255,255,0.15), transparent 70%);
+    opacity: 0;
+    transition: opacity 0.15s;
+}
+.btn:active::after {
+    opacity: 1;
+}
+
+.btn {
+    position: relative;
+    overflow: hidden;
+}
